@@ -11,8 +11,7 @@ import javax.swing.*;
 
     public class NewComplaint extends javax.swing.JFrame {
 
-        private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(NewComplaint.class.getName());
-        private String loggedInUser;
+        private final String loggedInUser;
 
         public NewComplaint(String username) {
             this.loggedInUser = username;
@@ -200,7 +199,7 @@ import javax.swing.*;
                 ImageIcon icon = new ImageIcon(img); //converts the image to an icon
                 photoLabel.setIcon(icon); //sets the icon to JLabel
             } catch (IOException ex) {
-                System.getLogger(NewComplaint.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+                System.err.println("Error reading the selected image file: " + ex.getMessage());
             }
         }
     }//GEN-LAST:event_browseButtonActionPerformed
@@ -218,7 +217,7 @@ import javax.swing.*;
         String location = txtLoc.getText();
         String description = txtDesc.getText();
 
-        if (location.isEmpty() || description.isEmpty() || "Select a Category".equals(category)) {
+        if (location.isEmpty() || description.isEmpty() || "Select a Category".equals(category) || selectedFile == null) {
             JOptionPane.showMessageDialog(this, "Kindly fill in all required fields.");
             return;
         }
