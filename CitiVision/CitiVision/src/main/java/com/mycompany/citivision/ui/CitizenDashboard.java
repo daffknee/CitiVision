@@ -2,8 +2,7 @@ package com.mycompany.citivision.ui;
 
 public class CitizenDashboard extends javax.swing.JFrame {
     
-    private String loggedInUser; //variable to store yung nakalogin na user
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CitizenDashboard.class.getName());
+    private final String loggedInUser; //variable to store yung nakalogin na user
 
     public CitizenDashboard(String username) { //modified para maaccept username 
         this.loggedInUser = username; // stores the username ayye
