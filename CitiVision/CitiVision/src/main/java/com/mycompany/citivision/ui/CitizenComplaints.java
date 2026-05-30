@@ -8,7 +8,6 @@ import java.awt.Color;
 
 public class CitizenComplaints extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CitizenComplaints.class.getName());
     private String loggedInUser;
     
     public CitizenComplaints(String username) {
@@ -17,7 +16,7 @@ public class CitizenComplaints extends javax.swing.JFrame {
         try {
             populateTable();
         } catch (SQLException ex) {
-            System.getLogger(CitizenComplaints.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            System.err.println("Database error while loading complaints table for user '" + loggedInUser + ": " + ex.getMessage());
         }
     }
     
