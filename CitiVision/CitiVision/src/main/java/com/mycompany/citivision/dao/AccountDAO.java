@@ -18,17 +18,17 @@ public class AccountDAO {
 
             pst.setString(1, newAccount.getUsername());
             pst.setString(2, newAccount.getPassword());
-            pst.setString(3, newAccount.getRole()); // Works for both Citizen and Admin!
+            pst.setString(3, newAccount.getRole()); // works for both Citizen and Admin!
 
             pst.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println("Database error during registration: " + ex.getMessage());
             return false;
         }
     }
 
-    // MODIFIED: Now returns an Account object (Polymorphism in action)
+    // returns an Account object (poly)
     public Account validateLogin(String username, String password) {
         String query = "SELECT accRole FROM accountdetails WHERE accUsername = ? AND accPassword = ?";
 
@@ -41,7 +41,7 @@ public class AccountDAO {
                 if (rs.next()) {
                     String role = rs.getString("accRole");
 
-                    // Return the specific subclass based on database role
+                    // return the specific subclass based on database role
                     if ("Citizen".equalsIgnoreCase(role)) {
                         return new CitizenAccount(username, password);
                     } else if ("Administrator".equalsIgnoreCase(role)) {
@@ -50,7 +50,7 @@ public class AccountDAO {
                 }
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println("Database error during registration: " + ex.getMessage());
         }
         return null; // Login failed
     }
