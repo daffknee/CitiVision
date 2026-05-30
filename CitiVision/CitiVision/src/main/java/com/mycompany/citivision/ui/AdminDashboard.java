@@ -7,13 +7,12 @@ import javax.swing.table.JTableHeader;
 import java.awt.Color;
 
 public class AdminDashboard extends javax.swing.JFrame {
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AdminDashboard.class.getName());
     public AdminDashboard() {
         initComponents();
         try {
             populateTable();
         } catch (SQLException ex) {
-            System.getLogger(AdminDashboard.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            System.err.println("Database error while loading the Admin Dashboard table: " + ex.getMessage());
         }
     }
     
