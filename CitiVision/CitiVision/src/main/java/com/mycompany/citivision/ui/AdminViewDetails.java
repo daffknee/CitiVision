@@ -6,8 +6,7 @@ import javax.swing.*;
 
 public class AdminViewDetails extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AdminViewDetails.class.getName());
-    private int complaintID; // global variable to store the passed ID
+    private final int complaintID; // global variable to store the passed ID
 
     public AdminViewDetails(int id) {
         this.complaintID = id; // change constructor to accept the ID
