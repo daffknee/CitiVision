@@ -203,7 +203,7 @@ public class SignUp extends javax.swing.JFrame {
 
         AccountDAO dao = new AccountDAO();
         if (dao.registerAccount(newAccount)) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Registration Successful!");
+            javax.swing.JOptionPane.showMessageDialog(this, "Registration Successful! \n Please procedd to log in.");
 
             // balik login
             Login loginFrame = new Login();
