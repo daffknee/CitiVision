@@ -36,7 +36,7 @@ public class ComplaintDAO {
             pst.executeUpdate();
             return true;
         } catch (Exception ex) {
-            ex.printStackTrace();
+            System.err.println("Database error while inserting a new complaint: " + ex.getMessage());
             return false;
         }
     }
@@ -52,7 +52,7 @@ public class ComplaintDAO {
                 return DbUtils.resultSetToTableModel(rs);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println("Database error while fetching complaints for user '" + username + ": " + ex.getMessage());
             return new DefaultTableModel(); 
         }
     }
@@ -66,7 +66,7 @@ public class ComplaintDAO {
             
             return DbUtils.resultSetToTableModel(rs);
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println("Database error while fetching all complaints: " + ex.getMessage());
             return new DefaultTableModel();
         }
     }
@@ -94,7 +94,7 @@ public class ComplaintDAO {
                 }
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println("Database error while fetching details for complaint ID " + compID + ": " + ex.getMessage());
         }
         return comp;
     }
@@ -109,7 +109,7 @@ public class ComplaintDAO {
             pst.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println("Database error while updating status for complaint ID " + compID + ": " + ex.getMessage());
             return false;
         }
     }
